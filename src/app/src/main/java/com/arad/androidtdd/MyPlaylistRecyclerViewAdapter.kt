@@ -2,11 +2,10 @@ package com.arad.androidtdd
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 
-import com.arad.androidtdd.placeholder.PlaceholderContent.PlaceholderItem
 import com.arad.androidtdd.databinding.PlaylistItemBinding
 
 /**
@@ -31,19 +30,19 @@ class MyPlaylistRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+
+        holder.playlistName.text=item.name
+        holder.playlistCategory.text=item.category
+        holder.playlistImage.setImageResource(item.image)
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: PlaylistItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        val playlistName: TextView = binding.playlistName
+        val playlistCategory: TextView = binding.playlistCategory
+        val playlistImage: ImageView = binding.playlistImage
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
     }
 
 }

@@ -14,7 +14,7 @@ import com.arad.androidtdd.databinding.PlaylistItemBinding
  * TODO: Replace the implementation with code for your data type.
  */
 class MyPlaylistRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: List<Playlist>
 ) : RecyclerView.Adapter<MyPlaylistRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

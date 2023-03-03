@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Android TDD</string>
     <string name="playlist_screen_title">Playlists</string>
+    <string name="playlist_image_description">Playlist image description</string>
 </resources>

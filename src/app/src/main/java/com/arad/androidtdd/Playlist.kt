@@ -1,4 +1,9 @@
 package com.arad.androidtdd
 
-class Playlist {
-}
+data class Playlist(
+val id:String,
+val name: String,
+val category: String,
+val image:Int
+)
+

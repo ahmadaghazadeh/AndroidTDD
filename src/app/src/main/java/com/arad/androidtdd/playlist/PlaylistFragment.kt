@@ -1,25 +1,24 @@
-package com.arad.androidtdd
+package com.arad.androidtdd.playlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import com.arad.androidtdd.R
 
 
 class PlaylistFragment : Fragment() {
 
     private var columnCount = 1
 
-    lateinit var viewModel:PlaylistViewModel
+    lateinit var viewModel: PlaylistViewModel
     lateinit var viewModelFactory: PlaylistViewModelFactory
-    private val repository=PlaylistRepository()
+    private val repository= PlaylistRepository()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

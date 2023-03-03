@@ -1,4 +1,4 @@
-package com.arad.androidtdd
+package com.arad.androidtdd.playlist
 
 import kotlinx.coroutines.flow.Flow
 

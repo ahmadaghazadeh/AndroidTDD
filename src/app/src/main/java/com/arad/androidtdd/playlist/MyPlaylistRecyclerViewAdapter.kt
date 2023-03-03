@@ -1,4 +1,4 @@
-package com.arad.androidtdd
+package com.arad.androidtdd.playlist
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater

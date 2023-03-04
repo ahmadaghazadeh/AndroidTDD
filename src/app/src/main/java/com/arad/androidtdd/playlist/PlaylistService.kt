@@ -9,7 +9,7 @@ class PlaylistService(private val api:PlayListAPI) {
         return flow {
             emit(Result.success(api.fetchAllPlaylists()))
         }.catch {
-            emit(Result.failure(RuntimeException("Something went wrong")))
+            emit(Result.failure(RuntimeException(it.message)))
         }
     }
 

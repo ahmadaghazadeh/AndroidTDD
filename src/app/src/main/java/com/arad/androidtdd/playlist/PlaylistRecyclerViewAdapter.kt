@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.arad.androidtdd.R
 
 import com.arad.androidtdd.databinding.PlaylistItemBinding
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
-class MyPlaylistRecyclerViewAdapter(
+class PlaylistRecyclerViewAdapter(
     private val values: List<Playlist>
-) : RecyclerView.Adapter<MyPlaylistRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PlaylistRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -33,7 +30,7 @@ class MyPlaylistRecyclerViewAdapter(
 
         holder.playlistName.text=item.name
         holder.playlistCategory.text=item.category
-        holder.playlistImage.setImageResource(item.image)
+        holder.playlistImage.setImageResource(R.mipmap.playlist)
     }
 
     override fun getItemCount(): Int = values.size

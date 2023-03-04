@@ -1,8 +1,10 @@
 package com.arad.androidtdd.playlist
 
-class PlayListAPI {
-    suspend fun fetchAllPlaylists():List<Playlist> {
-        TODO("Not yet implemented")
-    }
+import retrofit2.http.GET
+
+interface PlayListAPI {
+
+    @GET("playlists")
+    suspend fun fetchAllPlaylists():List<Playlist>
 
 }

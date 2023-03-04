@@ -10,15 +10,23 @@ import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.arad.androidtdd.R
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class PlaylistFragment : Fragment() {
 
-    private var columnCount = 1
-
     lateinit var viewModel: PlaylistViewModel
     lateinit var viewModelFactory: PlaylistViewModelFactory
-    private val api=PlayListAPI()
+    private val retrofit=Retrofit.Builder()
+        .baseUrl("http://192.168.1.2:3000/")
+        .client(OkHttpClient())
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+
+    private val api=retrofit.create(PlayListAPI::class.java)
     private val service = PlaylistService(api)
     private val repository= PlaylistRepository(service)
 
@@ -54,7 +62,7 @@ class PlaylistFragment : Fragment() {
     ) {
         with(view as RecyclerView) {
             layoutManager = LinearLayoutManager(context)
-            adapter = MyPlaylistRecyclerViewAdapter(playlists)
+            adapter = PlaylistRecyclerViewAdapter(playlists)
         }
     }
 

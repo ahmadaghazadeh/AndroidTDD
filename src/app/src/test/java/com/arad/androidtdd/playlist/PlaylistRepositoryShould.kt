@@ -41,21 +41,25 @@ class PlaylistRepositoryShould:BaseUnitTest() {
     }
 
     private fun mockFailureCase(): PlaylistRepository {
-        whenever(service.fetchPlaylists()).thenReturn(
-            flow {
-                emit(Result.failure<List<Playlist>>(exception))
-            }
-        )
+        runTest {
+            whenever(service.fetchPlaylists()).thenReturn(
+                flow {
+                    emit(Result.failure<List<Playlist>>(exception))
+                }
+            )
+        }
 
         return PlaylistRepository(service)
     }
 
     private fun mockSuccessfulCase(): PlaylistRepository {
-        whenever(service.fetchPlaylists()).thenReturn(
-            flow {
-                emit(Result.success(playlists))
-            }
-        )
+        runTest {
+            whenever(service.fetchPlaylists()).thenReturn(
+                flow {
+                    emit(Result.success(playlists))
+                }
+            )
+        }
         return PlaylistRepository(service);
     }
 }

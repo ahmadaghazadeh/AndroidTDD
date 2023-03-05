@@ -1,6 +1,7 @@
 package com.arad.androidtdd.playlist
 
 import com.arad.androidtdd.utils.BaseUnitTest
+import com.arad.androidtdd.utils.captureValues
 import com.arad.androidtdd.utils.getValueForTest
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -49,6 +50,15 @@ class PlaylistViewModelShould:BaseUnitTest() {
         }
         val viewModel=PlaylistViewModel(repository)
         assertEquals(exception,viewModel.playlists.getValueForTest()!!.exceptionOrNull())
+    }
+    @Test
+    fun showSpinnerWhileLoading()= runTest {
+        val viewModel=mockSuccessfulCase();
+        viewModel.loader.captureValues{
+            viewModel.playlists.getValueForTest()
+
+            assertEquals(true,values[0])
+        }
     }
 
     private fun mockSuccessfulCase(): PlaylistViewModel {

@@ -7,21 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.arad.androidtdd.R
-import dagger.hilt.EntryPoint
+import com.arad.androidtdd.databinding.FragmentItemListBinding
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class PlaylistFragment : Fragment() {
 
     lateinit var viewModel: PlaylistViewModel
-
+    private lateinit var binding: FragmentItemListBinding
     @Inject
     lateinit var viewModelFactory: PlaylistViewModelFactory
 
@@ -36,9 +34,17 @@ class PlaylistFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
-
+        binding = FragmentItemListBinding.inflate(layoutInflater)
+        val view = binding.root
         setUpViewModel()
+
+
+        viewModel.loader.observe(this as LifecycleOwner) { loading ->
+            when (loading) {
+                true -> binding.loader.visibility = View.VISIBLE
+                else -> binding.loader.visibility = View.GONE
+            }
+        }
 
         viewModel.playlists.observe(this as LifecycleOwner) { playlists ->
             if(playlists.getOrNull()!=null){

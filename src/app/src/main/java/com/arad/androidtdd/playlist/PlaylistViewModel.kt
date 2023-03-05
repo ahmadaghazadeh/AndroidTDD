@@ -6,6 +6,8 @@ import kotlinx.coroutines.launch
 class PlaylistViewModel(
     private val repository: PlaylistRepository
 ):ViewModel() {
+    val loader=MutableLiveData<Boolean>()
+
     val playlists= liveData {
         emitSource(repository.getPlaylists().asLiveData())
     }

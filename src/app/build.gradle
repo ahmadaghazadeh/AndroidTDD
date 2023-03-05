@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -55,7 +56,10 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+    implementation "com.google.dagger:hilt-android:2.44"
 
+
+    kapt "com.google.dagger:hilt-compiler:2.44"
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
@@ -71,4 +75,7 @@ dependencies {
     androidTestImplementation('com.adevinta.android:barista:4.2.0') {
         exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
     }
+}
+kapt {
+    correctErrorTypes true
 }
